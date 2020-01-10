@@ -1,0 +1,21 @@
+--同义词需要手工执行一遍
+
+
+
+--产品数据信息
+
+UPDATE tc_pf_bsc_info SET PRODUCT_FOR_SHORT = '测试' || pf_id;
+
+UPDATE tc_pf_bsc_info SET CREATE_PRSN = '超级管理员',MDFY_PRSON='超级管理员';
+
+UPDATE TP_DF_LSETLIST SET SETACC_CODE = '测试组合' || FIN_PF_ID || '00';
+
+UPDATE tp_gl_fundcode_map SET SETACC_CODE = '测试组合' || FIN_PF_ID || '00';
+
+--tc_rep_task  重新导入
+
+DELETE FROM tc_rep_task WHERE Report_Start_Time <=DATE'2019-12-01';
+
+UPDATE tp_gl_exhib_datadict SET key_name= replace(key_name,'融通','测试') WHERE key_name LIKE '%融通%';
+
+UPDATE TC_PF_GRADEDFUND_INFO SET PF_SYNOPSIS = REPLACE(PF_SYNOPSIS,'融通','测试');
